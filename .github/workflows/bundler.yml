@@ -77,6 +77,7 @@ jobs:
         working-directory: ./bundler
         env:
           GEM_COMMAND: ${{ (matrix.os.name == 'Windows') && 'gem.bat' || 'gem' }}
+          RSPEC_EXECUTABLE: ${{ (matrix.os.name == 'Windows') && 'rspec.bat' || 'rspec' }}
         if: matrix.ruby.name == 'jruby'
       - name: Run a warbler project
         run: |
