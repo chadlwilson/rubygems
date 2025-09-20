@@ -75,6 +75,8 @@ jobs:
         run: |
           bin/parallel_rspec --tag jruby_only --tag jruby
         working-directory: ./bundler
+        env:
+          GEM_COMMAND: ${{ (matrix.os.name == 'Windows') && 'gem.bat' || 'gem' }}
         if: matrix.ruby.name == 'jruby'
       - name: Run a warbler project
         run: |
