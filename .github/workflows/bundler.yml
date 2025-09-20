@@ -75,7 +75,7 @@ jobs:
         run: |
           bin/parallel_rspec --tag jruby_only --tag jruby
         working-directory: ./bundler
-        if: matrix.ruby.name == 'jruby' && matrix.os.name == 'Ubuntu'
+        if: matrix.ruby.name == 'jruby'
       - name: Run a warbler project
         run: |
           bin/rake bundler:install:local
@@ -83,7 +83,7 @@ jobs:
           bundle install
           bundle exec warble
           java -jar warbler.jar
-        if: matrix.ruby.name == 'jruby' && matrix.os.name == 'Ubuntu'
+        if: matrix.ruby.name == 'jruby'
 
     timeout-minutes: ${{ matrix.timeout || 60 }}
 
