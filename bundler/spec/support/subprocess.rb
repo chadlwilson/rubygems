@@ -41,7 +41,7 @@ module Spec
       command_execution = CommandExecution.new(cmd.to_s, timeout: options[:timeout] || 60)
 
       open3_opts = {}
-      open3_opts[:chdir] = dir if dir
+      open3_opts[:chdir] = (dir.respond_to?(:to_path) ? dir.to_path : dir) if dir
 
       require "open3"
       require "shellwords"
